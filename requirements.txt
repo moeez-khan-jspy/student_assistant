@@ -1,0 +1,29 @@
+# ===================================================
+# requirements.txt for the 🤖 Student Assistant App
+# ===================================================
+
+# Main application framework for creating the web UI
+streamlit
+
+# For loading environment variables (like API keys) from a .env file
+python-dotenv
+
+# For interacting with the Groq API (Llama 3.1 model)
+langchain-groq
+
+# Provides tools for splitting large texts into smaller chunks
+langchain-text-splitters
+
+# For using Google's Generative AI embedding models
+langchain-google-genai
+
+# Contains community-contributed LangChain components, including the FAISS wrapper
+langchain-community
+
+# The library for creating and searching the vector store (CPU version)
+# Required by langchain_community.vectorstores.FAISS
+faiss-cpu
+
+# For parsing PDF files and converting their content to Markdown
+# This library internally uses PyMuPDF
+pymupdf4llm
