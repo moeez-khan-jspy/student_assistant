@@ -2,7 +2,7 @@
 # Import necessary libraries
 # ==========================
 import streamlit as st  # To build the web app interface
-from langchain_groq import ChatGroq  # For using Groq's LLM (like ChatGPT)
+from langchain_google_genai import ChatGoogleGenerativeAI # For using Google's LLM (like ChatGPT)
 from langchain_text_splitters import RecursiveCharacterTextSplitter  # To split large text into smaller parts
 from langchain_google_genai import GoogleGenerativeAIEmbeddings  # To create embeddings using Google's AI
 from langchain_community.vectorstores import FAISS  # Fast tool to search similar text chunks
@@ -42,9 +42,10 @@ for message in st.session_state.messages:
 # =====================================
 # Initialize the Models
 # =====================================
-llm = ChatGroq(
-    model="llama-3.3-70b-versatile",  # AI model name
-    temperature=0.2  # How creative AI should be (low = more focused)
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    temperature=0.2,
+    google_api_key=google_api_key
 )
 
 embeddings = GoogleGenerativeAIEmbeddings(
