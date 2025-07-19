@@ -10,6 +10,18 @@ import pymupdf  # Used to read PDF files
 import pymupdf4llm  # Used to extract clean markdown text from PDF
 import os  # To work with environment variables
 from dotenv import load_dotenv  # To load secrets from .env file
+import asyncio # <--- ADDED THIS LINE
+
+# =============================================================
+# FIX: Add an asyncio event loop to the current thread
+# This is needed because langchain_google_genai uses async IO
+# =============================================================
+try:
+    loop = asyncio.get_running_loop()
+except RuntimeError:
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+# =============================================================
 
 # ==========================
 # Load API Key from .env file
@@ -48,6 +60,7 @@ llm = ChatGoogleGenerativeAI(
     google_api_key=google_api_key
 )
 
+# This initialization will now work correctly
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",  # Embedding model name
     google_api_key=google_api_key
