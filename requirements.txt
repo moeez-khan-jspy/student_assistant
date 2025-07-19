@@ -8,9 +8,6 @@ streamlit
 # For loading environment variables (like API keys) from a .env file
 python-dotenv
 
-# For interacting with the Groq API (Llama 3.1 model)
-langchain-groq
-
 # Provides tools for splitting large texts into smaller chunks
 langchain-text-splitters
 
