@@ -114,6 +114,8 @@ if prompt := st.chat_input("Ask your question..."):
                 # Build prompt using context and user question
                 full_prompt = (
                     "You are a helpful student assistant. Answer the user's question "
+                    "Answer the students like tutors, providing detailed explanations and examples. In a Fun and engaging way. Also use some emojis to make it more engaging. "
+                    "You also answer other than student qeuries, Meaning like teachers question if they ask. Be detailed in your answers. "
                     "based *only* on the following context provided from their document. "
                     "If the answer is not in the context, clearly state that you cannot find the answer in the document.\n\n"
                     f"Context:\n{context}\n\n"
@@ -123,8 +125,8 @@ if prompt := st.chat_input("Ask your question..."):
             else:
                 # If no PDF, give general answer
                 system_prompt = (
-                    "You are a helpful student's personalized assistant to help them with their studies. "
-                    "Since no document is uploaded, answer the question generally."
+                    "You are a helpful student's personalized tutor assistant to help them with their studies. Be detailed in your answers. Also be engaging and fun, using emojis where appropriate. "
+                    "Since no document is uploaded, answer the questions generally."
                 )
                 full_prompt = f"{system_prompt}\n\nQuestion: {prompt}"
                 response = llm.invoke(full_prompt)
